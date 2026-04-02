@@ -197,6 +197,7 @@ if st.session_state.is_error:
 elif st.session_state.parsed_json is not None:
     st.write("")
     
+    st.markdown("<div id='parsed-output-anchor'></div>", unsafe_allow_html=True)
     st.markdown("<h3>Parsed Explorer</h3>", unsafe_allow_html=True)
     
     if submit_clicked:
@@ -204,11 +205,15 @@ elif st.session_state.parsed_json is not None:
             """
             <script>
                 setTimeout(function() {
-                    const elements = window.parent.document.querySelectorAll('.stJson');
-                    if (elements.length > 0) {
-                        elements[0].scrollIntoView({behavior: 'smooth', block: 'center'});
+                    const anchors = window.parent.document.querySelectorAll('#parsed-output-anchor');
+                    if (anchors.length > 0) {
+                        // Scroll top of screen to this anchor
+                        anchors[anchors.length - 1].scrollIntoView({behavior: 'smooth', block: 'start'});
                     } else {
-                        window.parent.scrollTo({top: window.parent.document.body.scrollHeight, behavior: 'smooth'});
+                        const elements = window.parent.document.querySelectorAll('.stJson');
+                        if (elements.length > 0) {
+                            elements[0].scrollIntoView({behavior: 'smooth', block: 'start'});
+                        }
                     }
                 }, 100);
             </script>
