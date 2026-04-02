@@ -3,7 +3,11 @@ import json
 
 st.set_page_config(page_title="JSON Mastery", page_icon="🦄", layout="wide")
 
+# Inject SEO Meta Tags and Custom CSS
 custom_css = """
+<!-- SEO Meta Tags -->
+<meta name="description" content="A vibrant, lightning-fast, and minimal JSON parser and formatter. Parse, format, and minify your JSON data effortlessly.">
+<meta name="keywords" content="JSON, parser, formatter, minify, format, online tool, developer tools, clean UI">
 <style>
 /* Hide default structural elements */
 #MainMenu {visibility: hidden;}
