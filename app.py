@@ -1,5 +1,6 @@
 import streamlit as st
 import json
+import streamlit.components.v1 as components
 
 st.set_page_config(page_title="JSON Mastery", page_icon="🦄", layout="wide")
 
@@ -197,6 +198,23 @@ elif st.session_state.parsed_json is not None:
     st.write("")
     
     st.markdown("<h3>Parsed Explorer</h3>", unsafe_allow_html=True)
+    
+    if submit_clicked:
+        components.html(
+            """
+            <script>
+                setTimeout(function() {
+                    const elements = window.parent.document.querySelectorAll('.stJson');
+                    if (elements.length > 0) {
+                        elements[0].scrollIntoView({behavior: 'smooth', block: 'center'});
+                    } else {
+                        window.parent.scrollTo({top: window.parent.document.body.scrollHeight, behavior: 'smooth'});
+                    }
+                }, 100);
+            </script>
+            """,
+            height=0
+        )
     
     # Utilities horizontal row right above the viewer, ensuring it's not distracting.
     util_col1, util_col2, util_col3 = st.columns([1.5, 1.5, 5])
