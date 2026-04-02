@@ -3,11 +3,14 @@ import json
 
 st.set_page_config(page_title="JSON Mastery", page_icon="🦄", layout="wide")
 
-# Inject SEO Meta Tags and Custom CSS
-custom_css = """
-<!-- SEO Meta Tags -->
+# Inject SEO Meta Tags separate from CSS so Streamlit markdown parser doesn't break
+seo_tags = """
 <meta name="description" content="A vibrant, lightning-fast, and minimal JSON parser and formatter. Parse, format, and minify your JSON data effortlessly.">
 <meta name="keywords" content="JSON, parser, formatter, minify, format, online tool, developer tools, clean UI">
+"""
+st.markdown(seo_tags, unsafe_allow_html=True)
+
+custom_css = """
 <style>
 /* Hide default structural elements */
 #MainMenu {visibility: hidden;}
